@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include elvaapp *.css
+recursive-include elvaapp *.csv
+recursive-include elvaapp *.html
+recursive-include elvaapp *.ico
+recursive-include elvaapp *.js
+recursive-include elvaapp *.json
+recursive-include elvaapp *.md
+recursive-include elvaapp *.png
+recursive-include elvaapp *.py
+recursive-include elvaapp *.svg
+recursive-include elvaapp *.txt
+recursive-exclude elvaapp *.pyc
