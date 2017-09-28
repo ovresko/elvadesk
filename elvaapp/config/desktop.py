@@ -7,8 +7,22 @@ def get_data():
 		{
 			"module_name": "ElvaApp",
 			"color": "green",
-			"icon": "octicon octicon-file-directory",
+			"icon": "assets/frappe/images/cow-silhouette.svg",
 			"type": "module",
 			"label": _("ElvaApp")
+		},
+		{
+			"module_name": "Reproduction",
+			"color": "orange",
+			"icon": "assets/frappe/images/cow-silhouette.svg",
+			"type": "module",
+			"label": _("Reproduction")
+		},
+		{
+			"module_name": "Production",
+			"color": "gray",
+			"icon": "assets/frappe/images/milk.svg",
+			"type": "module",
+			"label": _("Production")
 		}
 	]
