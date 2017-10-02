@@ -15,3 +15,11 @@ def set_jours_lactation(_vache):
 	dv = frappe.utils.data.date_diff(frappe.utils.data.today(),vache.debut_lactation)
 	#frappe.set_value('Vache',vache.name,'jours_lactation',dv)
 	return dv
+
+@frappe.whitelist()
+def get_jours_gestante(_vache):
+	vache = frappe.get_doc('Vache',_vache)
+	if(vache.etat_reproduction == 'Gestante'):
+		jg = frappe.utils.data.date_diff(frappe.utils.data.today(),vache.debut_velage)
+		return str(jg) + ' jours'
+	return None

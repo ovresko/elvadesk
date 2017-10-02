@@ -9,44 +9,6 @@ from frappe.model.document import Document
 class Insemination(Document):
 	def validate(self):
 		vache = frappe.get_doc("Vache",self.vache)
-		if(self.resultat == 'En attente'):
-			result,message = VachePeutInseminer(vache)
-			if(not result):
-				frappe.throw(message)
-				return
-			frappe.set_value('Vache',vache.tag,'derniere_insemination',self.date)
-			vache = frappe.set_value('Vache',vache.tag,'etat_reproduction','En attente')
-			jours_diagnostique = frappe.db.get_value("Parametres","Parametres","jours_diagnostique")
-			date_debut = frappe.utils.data.add_days(self.date,int(jours_diagnostique))
-			date_debut_todo = frappe.utils.data.add_days(self.date,int(jours_diagnostique)- 10)
-			#frappe.msgprint(date_debut)
-			doc = frappe.get_doc({
-				"doctype": "Event",
-				"details": """Diagnostique """+ (vache.tag)+"""<br>
-				Inseminer le """+(self.date)+""" """ + (self.type),
-				"status": "Open",
-				"subject": "Diagnostique "+ (vache.tag),
-				"starts_on": date_debut,
-				"all_day": "1",
-				"event_type":"Public",
-				"color":"red",
-				"description":"""Diagnostique """+ (vache.tag)+"""<br>
-				Numero insemination"""+ (self.name)+"""<br>
-				Inseminer le """+(self.date)+""" """ + (self.type)
-			})
-			doc.insert()
-
-			todo = frappe.get_doc({
-				"doctype" : "ToDo",
-				"status":"Open",
-				"priority":"High",
-				"color":"red",
-				"date": date_debut_todo,
-				"description" : """Diagnostiquer la vache """+(vache.tag)+""" dans moin de 10 jours""",
-				"reference_type" : "Insemination"
-			})
-			todo.insert()
-		vache = frappe.get_doc("Vache",self.vache)
 		result,message = VachePeutInseminer(vache)
 		if(not result):
 			frappe.throw(message)

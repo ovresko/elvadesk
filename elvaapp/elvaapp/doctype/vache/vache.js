@@ -49,6 +49,17 @@ function get_jours_lactation(frm){
 			cur_frm.refresh();
 		}
 	});
+
+	frappe.call({
+		method: "elvaapp.elvaapp.doctype.vache.vache.get_jours_gestante",
+		args:{
+			"_vache":frm.doc.name
+		},
+		callback: function(r){
+			cur_frm.set_value('jours_gestante',r.message);
+			cur_frm.refresh();
+		}
+	})
 }
 
 frappe.ui.form.on("Vache","dob",function(frm){

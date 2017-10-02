@@ -74,18 +74,23 @@ app_license = "MIT"
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
+calendars = ["Insemination"]
 
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+ 	"Insemination": {
+ 		"after_insert": "elvaapp.reproduction.stat_controller.insemination_event"
+    },
+    "Diagnostique":{
+        "after_insert": "elvaapp.reproduction.stat_controller.diagnostique_event"
+    },
+    "Velage": {
+        "after_insert": "elvaapp.reproduction.stat_controller.velage_event"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -119,4 +124,3 @@ app_license = "MIT"
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "elvaapp.event.get_events"
 # }
-
