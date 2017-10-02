@@ -7,7 +7,15 @@ import frappe
 from frappe.model.document import Document
 
 class Lactation(Document):
-	pass
+	def before_insert(self):
+		stock_value = frappe.db.get_value("Parametres","stock")
+		today = self.qts_total
+		frappe.msgprint(stock_value)
+		value_  = stock_value + today
+		frappe.db.set_value("Parametres","Parametres","stock",value_)
+	def validate(self):
+		if(self.qts_total < 1):
+			frappe.throw("Quantité non valide")
 
 @frappe.whitelist()
 def validate_lactation(vache):

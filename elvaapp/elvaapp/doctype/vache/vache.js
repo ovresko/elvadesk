@@ -1,6 +1,7 @@
 // Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
+
 frappe.ui.form.on('Vache', {
 	setup: function(frm) {
 
@@ -25,7 +26,8 @@ frappe.ui.form.on('Vache', {
 			get_etat_sante(frm);
 			cur_frm.set_value("age",_dob);
 			get_jours_lactation(frm);
-		}
+			cur_frm.refresh();
+			}
 
 
 

@@ -8,17 +8,14 @@ from frappe.model.document import Document
 
 class Diagnostique(Document):
 	def before_insert(self):
-		pass
-
-	def validate(self):
-		if(not self.vache):
-			frappe.throw("Vous devez selectionner la vache")
-		if(not self.insemination):
-			frappe.throw("Vous devez selectionner une insemination")
 		vache = frappe.get_doc('Vache',self.vache)
 		insemination = frappe.get_doc('Insemination',self.insemination)
 		if(self.resultat == 'Positive'):
-			frappe.set_value('Insemination',self.insemination,'resultat','Positive')
+			#insemination.cancel()
+			insemination.resultat = 'Positive'
+			insemination._save(ignore_permissions=True)
+			#frappe.set_value('Insemination',self.insemination,'resultat','Positive')
+			#insemination.submit()
 			frappe.set_value('Vache',self.vache,'etat_reproduction','Gestante')
 			frappe.set_value('Vache',self.vache,'debut_velage',insemination.date)
 			jours_debut_tarissement = frappe.db.get_value("Parametres","Parametres","jours_debut_tarissement")
@@ -81,6 +78,8 @@ class Diagnostique(Document):
 			})
 			todo.insert()
 		if(self.resultat == 'Négative'):
+			frappe.set_value('Vache',self.vache,'etat_reproduction','En service')
+			frappe.set_value('Vache',self.vache,'debut_velage',None)
 			frappe.set_value('Insemination',self.insemination,'resultat','Négative')
 			todo = frappe.get_doc({
 				"doctype" : "ToDo",
@@ -92,6 +91,13 @@ class Diagnostique(Document):
 				"reference_type" : "Diagnostique"
 			})
 			todo.insert()
+			
+
+	def validate(self):
+		if(not self.vache):
+			frappe.throw("Vous devez selectionner la vache")
+		if(not self.insemination):
+			frappe.throw("Vous devez selectionner une insemination")
 
 
 @frappe.whitelist()
