@@ -89,6 +89,9 @@ doc_events = {
     },
     "Velage": {
         "after_insert": "elvaapp.reproduction.stat_controller.velage_event"
+    },
+    "Lactation":{
+        "after_insert": "elvaapp.production.production_controller.insert_session"
     }
 }
 

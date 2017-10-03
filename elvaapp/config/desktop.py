@@ -12,6 +12,13 @@ def get_data():
 			"label": _("ElvaApp")
 		},
 		{
+			"module_name": "Troupeau",
+			"color": "blue",
+			"icon": "assets/frappe/images/cow-silhouette.svg",
+			"type": "module",
+			"label": _("Troupeau")
+		},
+		{
 			"module_name": "Reproduction",
 			"color": "orange",
 			"icon": "assets/frappe/images/cow-silhouette.svg",
