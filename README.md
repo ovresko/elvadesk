@@ -1,12 +1,38 @@
-<<<<<<< HEAD
-## ElvaApp
+# ElvaApp
+Dairy farm management application build with frappe framework.
+Maintained by Ovresko techs.
 
-Gestion elvage
+# Features
+- [ ] Gestion du troupeau
+  - [ ] Vaches
+  - [x] veaux
+  - [x] taureaux
+  - [ ] Réformes
+- [ ] Gestion reproduction
+  - [ ] Insemination
+  - [ ] Mise bas
+  - [ ] Diagnostiques
+  - [ ] Planning insemination
+  - [ ] Notifications évennements
+  - [ ] Rapports
+- [ ] Gestion du production
+  - [ ] Saisis Sessions lactation
+  - [ ] Performance
+  - [ ] Allaitement veau
+  - [ ] Stock laitier
+- [ ] Gestion santé
+  - [ ] Dossier médical
+  - [ ] Stock médical
+  - [ ] Plan traitement médical
+- [ ] Gestion métier
+  - [ ] Gestion de stock
+  - [ ] Employés
+  - [ ] Gestion commercial (vente, achats dépenses ...)
+- [ ] Alimentation
+  - [ ] Menu journalier
+  - [ ] Plan alimentaire
+  - [ ] Plan alimentaire veaux
 
-#### License
+# License MIT
+Géstion d'élvage ELVADESK
 
-MIT
-=======
-# elvadesk
-Géstion d'élvage
->>>>>>> 644e399580849fb4036baa73dd12facf3fd7b5b2
