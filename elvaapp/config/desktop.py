@@ -31,5 +31,12 @@ def get_data():
 			"icon": "assets/frappe/images/milk.svg",
 			"type": "module",
 			"label": _("Production")
+		},
+		{
+			"module_name": "Sante",
+			"color": "purple",
+			"icon": "assets/frappe/images/milk.svg",
+			"type": "module",
+			"label": _("Sante")
 		}
 	]

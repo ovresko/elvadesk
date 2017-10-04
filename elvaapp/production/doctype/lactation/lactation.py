@@ -15,7 +15,15 @@ class Lactation(Document):
 def validate_lactation(vache):
 	vacheobjecy = frappe.get_doc("Vache",vache)
 	#frappe.msgprint(vacheobjecy+"")
+	if(vacheobjecy.etat_lactation != "En lactation"):
+		return "La vache {} est {}".format(vacheobjecy.tag, vacheobjecy.etat_lactation),True
 	if(vacheobjecy.consommation == "Veaux" or vacheobjecy.consommation == "Abandonner"):
 		return """Production doit étre hors consommation humaine
-	Pour la vache """+vache+""", """,True
+	Pour la vache <br>  خارج استهلاك """+vache+""", """,True
+
 	return "",False
+
+@frappe.whitelist()
+def get_vache_en_lactation():
+	vaches = frappe.get_list("Vache",filters = {"etat_lactation": "En lactation"},fields= "*")
+	return len(vaches)

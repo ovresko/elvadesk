@@ -8,9 +8,20 @@ frappe.ui.form.on("Lactation",{
 			if(!frm.doc.__islocal){
 				frm.add_custom_button('Créer nouveau',function(){
 					btn_save_and_new(frm);
-				});	
+				});
 			}
-		}			
+
+
+		},
+		onload: function(frm){
+			frappe.call({
+				method:"elvaapp.production.doctype.lactation.lactation.get_vache_en_lactation",
+				callback: function(r){
+					frm.set_value("vache_on_lactation",r.message);
+					cur_frm.refresh();
+				}
+			});
+		}
 	}
 );
 
@@ -36,7 +47,7 @@ frappe.ui.form.on("Lactation","ajouter_tout",function(frm){
 		callback: function(r){
 			console.log(r.message);
 			fill_table(r.message);
-			
+
 		}
 
 	});
@@ -63,7 +74,7 @@ frappe.ui.form.on("Lactation item","vache_name",function(frm){
 	cur_frm.set_value("lactations","date", frappe.datetime.nowdate());
 	cur_frm.refresh();
 	calculate_totals(frm);
-	
+
 });
 
 var fill_table = function(vaches){
@@ -72,9 +83,9 @@ var fill_table = function(vaches){
 			// var result = r.message[1];
 			// if(!result){
 			// 	frappe.msgprint(r.message[0]);
-			// 	frappe.throw('SSSS');	
+			// 	frappe.throw('SSSS');
 			// }
-			
+
 			var child = cur_frm.add_child("lactations");
 			console.log(row);
 			frappe.model.set_value(child.doctype, child.name, "vache_name", row.name);
@@ -87,7 +98,7 @@ var fill_table = function(vaches){
 
 		cur_frm.refresh();
 		calculate_totals(cur_frm);
-		
+
 };
 
 function add_vache(vache){
@@ -97,18 +108,18 @@ function add_vache(vache){
 		console.log("add_vache : "+vache);
 
 		check_vache(vache);
-		
+
 		var child = cur_frm.add_child("lactations");
 		frappe.model.set_value(child.doctype, child.name, "vache_name", vache);
 		frappe.model.set_value(child.doctype, child.name, "date", cur_frm.doc.date);
 		frappe.model.set_value(child.doctype, child.name, "numero_session", cur_frm.doc.numero);
 		frappe.model.set_value(child.doctype, child.name, "qts", undefined);
 		frappe.model.set_value(child.doctype, child.name, "remarques", "");
-		
+
 		cur_frm.set_value("chercher_vache",undefined);
 		cur_frm.refresh();
 		calculate_totals(cur_frm);
-	}	
+	}
 }
 
 
@@ -127,7 +138,7 @@ function calculate_totals(frm){
 			console.log(top_prod + " is smaller "+lact.qts);
 			top_prod = lact.qts;
 			console.log("top prod = "+top_prod	);
-			
+
 			vache_top_prod = lact.vache_name;
 		}
 	});
@@ -151,7 +162,7 @@ var btn_save_and_new = function (frm) {
 function check_vache(vache){
 
 	console.log("calling: check_vache "+ vache);
-	
+
 	frappe.call({
 		method : "elvaapp.production.doctype.lactation.lactation.validate_lactation",
 		args:{
@@ -166,8 +177,8 @@ function check_vache(vache){
 			}
 		}
 	});
- 
 
-	
+
+
 
 }
