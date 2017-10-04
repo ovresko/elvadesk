@@ -4,13 +4,7 @@ from frappe import _
 
 def get_data():
 	return [
-		{
-			"module_name": "ElvaApp",
-			"color": "green",
-			"icon": "assets/frappe/images/cow-silhouette.svg",
-			"type": "module",
-			"label": _("ElvaApp")
-		},
+
 		{
 			"module_name": "Troupeau",
 			"color": "blue",
@@ -19,9 +13,23 @@ def get_data():
 			"label": _("Troupeau")
 		},
 		{
+			"module_name": "Vaches",
+			"color": "yellow",
+			"icon": "assets/frappe/images/cow-silhouette.svg",
+			"type": "link",
+			"link": "list/Vache"
+		},
+		{
+			"module_name": "Alimentation",
+			"color": "green",
+			"icon": "assets/frappe/images/wheat.svg",
+			"type": "module",
+			"label": _("Alimentation")
+		},
+		{
 			"module_name": "Reproduction",
 			"color": "orange",
-			"icon": "assets/frappe/images/cow-silhouette.svg",
+			"icon": "assets/frappe/images/medical.svg",
 			"type": "module",
 			"label": _("Reproduction")
 		},
@@ -35,8 +43,15 @@ def get_data():
 		{
 			"module_name": "Sante",
 			"color": "purple",
-			"icon": "assets/frappe/images/milk.svg",
+			"icon": "assets/frappe/images/heartbeat.svg",
 			"type": "module",
 			"label": _("Sante")
+		},
+		{
+			"module_name": "La ferme",
+			"color": "gray",
+			"icon": "assets/frappe/images/heartbeat.svg",
+			"type": "module",
+			"label": _("La ferme")
 		}
 	]

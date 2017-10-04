@@ -3,3 +3,5 @@ Reproduction
 Troupeau
 Production
 Sante
+Alimentation
+La ferme
