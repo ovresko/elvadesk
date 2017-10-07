@@ -92,7 +92,11 @@ doc_events = {
     },
     "Lactation":{
         "after_insert": "elvaapp.production.production_controller.insert_session"
+    },
+    "Reforme":{
+        "after_insert": "elvaapp.troupeau.troupeau_controller.reforme_vache"
     }
+
 }
 
 # Scheduled Tasks

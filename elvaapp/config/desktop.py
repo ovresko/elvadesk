@@ -50,7 +50,7 @@ def get_data():
 		{
 			"module_name": "La ferme",
 			"color": "gray",
-			"icon": "assets/frappe/images/heartbeat.svg",
+			"icon": "assets/frappe/images/transport.svg",
 			"type": "module",
 			"label": _("La ferme")
 		}

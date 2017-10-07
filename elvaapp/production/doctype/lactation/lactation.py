@@ -25,5 +25,5 @@ def validate_lactation(vache):
 
 @frappe.whitelist()
 def get_vache_en_lactation():
-	vaches = frappe.get_list("Vache",filters = {"etat_lactation": "En lactation"},fields= "*")
+	vaches = frappe.get_list("Vache",filters = {"etat_lactation": "En lactation","etat_actuel": "Active"},fields= "*")
 	return len(vaches)
