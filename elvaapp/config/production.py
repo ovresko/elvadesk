@@ -12,6 +12,12 @@ def get_data():
                     "label": "Sessions lactation",
 					"description": _("Sessions lactation"),
 				},
+				{
+					"type": "doctype",
+					"name": "Tarissement",
+                    "label": "Tarissements",
+					"description": _("Tarissements"),
+				},
 			]
 		},
         {

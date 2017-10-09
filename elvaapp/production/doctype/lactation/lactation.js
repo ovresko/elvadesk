@@ -43,7 +43,7 @@ frappe.ui.form.on("Lactation","ajouter_tout",function(frm){
 			"doctype": "Vache",
 			"filters":{
 				"etat_lactation":"En lactation",
-				"etat_actuel":"Active"
+				"etat_actuel":"Active"	
 		},
 			"fields" :"*"
 		},

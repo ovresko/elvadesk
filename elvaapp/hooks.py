@@ -95,6 +95,9 @@ doc_events = {
     },
     "Reforme":{
         "after_insert": "elvaapp.troupeau.troupeau_controller.reforme_vache"
+    },
+    "Tarissement":{
+        "after_insert": "elvaapp.production.production_controller.taris_vache"
     }
 
 }
