@@ -30,5 +30,18 @@ def get_data():
                 "description": _("Indices lait"),
             },
             ]
+        },
+		{
+            "label": _("Rapports"),
+			"icon": "fa fa-list",
+            "items" : [
+				{
+				"type": "report",
+				"is_query_report": True,
+				"name": "Rapport Qts lactation",
+				"doctype": "Lactation",
+				"label": "Rapport journalier Qts lactation"
+				}
+            ]
         }
 	]

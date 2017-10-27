@@ -5,8 +5,6 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-from frappe.model.naming import make_autoname
 
-class Poids(Document):
-	def autoname(self):
-		self.name = make_autoname("{} Kg -".format(self.poids))
+class Programme(Document):
+	pass

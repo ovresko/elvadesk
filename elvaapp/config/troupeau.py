@@ -76,8 +76,20 @@ def get_data():
 
         {
             "label": _("Rapports"),
+			"icon": "fa fa-list",
             "items" : [
-
+				{
+				"type": "report",
+				"is_query_report": True,
+				"name": "Vaches en gestation",
+				"doctype": "Vache"
+				},
+				{
+				"type": "report",
+				"is_query_report": True,
+				"name": "Vaches en service",
+				"doctype": "Vache"
+				},
             ]
-        },
+        }
 	]

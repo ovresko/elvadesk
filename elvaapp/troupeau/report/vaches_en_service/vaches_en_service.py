@@ -11,9 +11,10 @@ def execute(filters=None):
 	if not filters: filters = {}
 
 	columns = get_columns()
-	data = frappe.db.sql('''select name,age,etat_reproduction, race, date(velage_presume)
+	data = frappe.db.sql('''select name,age,etat_reproduction, numero_lactation, date(dob),race , date(debut_velage)
 		from tabVache
-			where etat_reproduction = "Gestante" and velage_presume <= %s and velage_presume > %s''',(frappe.utils.data.add_days(frappe.utils.data.today(),30),frappe.utils.data.add_days(frappe.utils.data.today(),-30) ))
+			where etat_reproduction = "En service" or
+			etat_reproduction = "En attente"''')
 	return columns, data
 
 def get_columns():
@@ -36,15 +37,25 @@ def get_columns():
 			'width':140
 		},
 		{
+			'fieldname': 'numero_lactation',
+			'label': 'N Lactation',
+			'fieldtype': 'Int'
+		},
+		{
+			'fieldname': 'dob',
+			'fieldtype': 'Date',
+			'label': 'Naissance'
+		},
+		{
 			'fieldname': 'race',
 			'fieldtype': 'Data',
 			'width':120,
 			'label': 'Race'
 		},
 		{
-			'fieldname': 'velage_presume',
+			'fieldname': 'debut_velage',
 			'fieldtype': 'Date',
 			'width':200,
-			'label': 'Velage presume'
+			'label': 'Debut velage'
 		}
 	]
