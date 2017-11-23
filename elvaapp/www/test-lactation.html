@@ -1,0 +1,29 @@
+{% extends "templates/web.html" %}
+
+{% block title %} test itite {% endblock %}
+
+{% block script %}
+<script>{% include "templates/includes/lactation.js" %}
+</script>
+<style >
+{% include "templates/includes/lactation.css" %}
+</style>
+{% endblock %}
+
+{% block header %}<h2>header</h2>{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <!-- Content here -->
+  
+  {% for vache in data %}
+
+  <h1>65</h1>
+  {{ vache }}
+
+  {% endfor %}
+
+
+</div>
+
+{% endblock %}

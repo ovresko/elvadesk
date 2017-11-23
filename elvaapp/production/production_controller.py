@@ -42,7 +42,7 @@ def insert_session(lactation, method):
 	:do_not_save: Optional flag
 	:do_not_submit: Optional flag
 	'''
-    stock_entry = make_stock_entry(item_code="lait", to_warehouse="Reservoir lait - F", qty=today, purpose = "Manufacture" )
+    stock_entry = make_stock_entry(item_code="lait", to_warehouse="Reservoir lait - FA", qty=today, purpose = "Manufacture" )
 
     stock_entry.add_comment("Comment", ("Opening Stock"))
 
